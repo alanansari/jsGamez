@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Silkscreen',sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #1d0045;
+}
+.heading{
+    text-align: center;
+    color: #ffffff;
+    padding: 5vh 0;
+    font-size: 7vw;
+}
+.container{
+    height: 70vh;
+    width: 65vw;
+    margin: 0 auto;
+    padding: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card{
+    background-color: #8a2be2;
+    height: 15rem;
+    width: 12rem;
+    margin: 0.6rem;
+    border-radius: 1rem;
+}
