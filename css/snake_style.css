@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
     font-family: 'Silkscreen',sans-serif;
+    color: white;
 }
 body{
     margin: 0;
@@ -13,7 +14,7 @@ body{
     color: goldenrod;
     font-size: 3.5vw;
 }
-.console{
+#console{
     position: relative;
     margin: 0 auto;
     background-image: url("../img/grass.png");
@@ -43,6 +44,7 @@ body{
 
 #pausebtn{
     visibility: hidden;
+    z-index: 1;
     background-image: url("../img/pause.png");
     height: 100px;
     width: 100px;
@@ -51,7 +53,18 @@ body{
     left: 412px;
 }
 
-p{
-    color: white;
+.console_foot{
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    width: 925px;
 }
+
+.tail{
+    background-image: url("../img/tail.png");
+    position: absolute;
+    height: 25px;
+    width: 25px;
+}
+
 
