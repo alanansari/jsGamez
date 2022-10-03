@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Silkscreen',sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #1d0045;
+}
+
+.heading{
+    text-align: center;
+    color: #ffffff;
+    padding: 2vh 0;
+    font-size: 4.5vw;
+}
+.console{
+    margin: 0 auto;
+    background-color: greenyellow;
+    height: 450px;
+    width: 925px;
+    padding: 0;
+    box-sizing: border-box;
+}
+.head{
+    background-color: red;
+    margin: 0;
+    height: 25px;
+    width: 25px;
+    position: relative;
+    top: 0;
+    left: 0;   
+}
+p{
+    color: white;
+}
