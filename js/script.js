@@ -45,9 +45,24 @@ function updateTailPos(length){
     }
 }
 
+
+function crashDetect(length){
+    for(let i=1;i<length;i++){
+        const node = document.getElementById("tail-"+i);
+        if((posx+"px")==(node.style.left)&&(posy+"px")==(node.style.top)){
+            gameOver();
+        }
+    }
+}
+
+function gameOver(){
+    clearInterval(myInterval);
+}
+
 function nextframe(){
 
     updateTailPos(score);
+    
 
     //              continuous movement
     if(up===1)
@@ -88,6 +103,8 @@ function nextframe(){
     const head = document.getElementById("head");
     head.style.top = posy + "px";
     head.style.left = posx + "px";
+
+    crashDetect(score);
 }
 
 function changedir(input){

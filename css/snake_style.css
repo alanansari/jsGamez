@@ -26,6 +26,7 @@ body{
 }
 #head{
     position: absolute;
+    z-index: 1;
     background-image: url("../img/head.png");
     margin: 0;
     height: 25px;
@@ -44,7 +45,7 @@ body{
 
 #pausebtn{
     visibility: hidden;
-    z-index: 1;
+    z-index: 2;
     background-image: url("../img/pause.png");
     height: 100px;
     width: 100px;
