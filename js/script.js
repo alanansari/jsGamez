@@ -1,8 +1,16 @@
 let posx = 0,posy = 0;
 let up=0,left=0,right=0,down=0;
-let pause = 0;
+let pause = 1, score=0;
 
-let myInterval = setInterval(nextframe,100);
+// initial food generation
+const food = document.getElementById("food");
+
+let foodx=100;
+let foody=250;
+let myInterval;
+function startgame(){
+    myInterval = setInterval(nextframe,100);
+}
 
 function nextframe(){
 
@@ -28,6 +36,21 @@ function nextframe(){
         posx=0;
     if(posy>425)
         posy=0;
+
+    console.log(posx,foodx);
+    
+    // Ate food
+    if( posx==foodx && posy==foody ){
+
+        foodx = Math.floor(Math.random()*36)*25;
+        foody = Math.floor(Math.random()*18)*25;
+        food.style.top = foody + "px";
+        food.style.left = foodx + "px";
+
+        score++;
+        console.log(score);
+    }
+
     const head = document.getElementById("head");
     head.style.top = posy + "px";
     head.style.left = posx + "px";
@@ -47,16 +70,15 @@ function changedir(input){
         up=0;down=0;left=0;right=1;
     }
     if(input===' '){
-        if(pause===0){
+        if(pause==0){
             clearInterval(myInterval);
             pause=1;
         }
         else{
-            myInterval = setInterval(nextframe,100);
             pause=0;
+            startgame();
         }
     }
-    console.log(input);
 }
 
 
