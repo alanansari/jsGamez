@@ -17,7 +17,7 @@ body{
 .console{
     position: relative;
     margin: 0 auto;
-    background-image: url("/img/grass.png");
+    background-image: url("../img/grass.png");
     background-size: cover;
     height: 450px;
     width: 925px;
@@ -26,7 +26,7 @@ body{
 }
 #head{
     position: absolute;
-    background-image: url("/img/head.png");
+    background-image: url("../img/head.png");
     margin: 0;
     height: 25px;
     width: 25px;
@@ -36,7 +36,7 @@ body{
 
 #food{
     position: absolute;
-    background-image: url("/img/food.png");
+    background-image: url("../img/food.png");
     margin: 0;
     height: 25px;
     width: 25px;

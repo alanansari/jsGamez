@@ -1,6 +1,6 @@
 let posx = 0,posy = 0;
-let up=0,left=0,right=0,down=0;
-let pause = 1, score=0;
+let up=0,left=0,right=1,down=0;
+let pause = 0, score=0;
 
 // initial food generation
 const food = document.getElementById("food");
@@ -8,6 +8,9 @@ const food = document.getElementById("food");
 let foodx=100;
 let foody=250;
 let myInterval;
+
+startgame();
+
 function startgame(){
     myInterval = setInterval(nextframe,100);
 }
