@@ -1,12 +1,12 @@
-let posx = 0,posy = 0;
+let posx = 0, posy =  0;
 let up=0,left=0,right=1,down=0;
 let pause = 0, score=0;
+const pausebtn = document.getElementById("pausebtn");
 
 // initial food generation
 const food = document.getElementById("food");
-
-let foodx=100;
-let foody=250;
+let foodx=200;
+let foody=200;
 let myInterval;
 
 startgame();
@@ -17,8 +17,7 @@ function startgame(){
 
 function nextframe(){
 
-    // continuous movement
-
+    //              continuous movement
     if(up===1)
         posy-=25;
     if(down===1)
@@ -28,30 +27,27 @@ function nextframe(){
     if(right===1)
         posx+=25;
 
-
-    // playground edges
-
+    //             teleport from playground edges
     if(posx<0)
         posx=900;
     if(posy<0)
-        posy=425;
+        posy=400;
     if(posx>900)
         posx=0;
-    if(posy>425)
+    if(posy>400)
         posy=0;
-
-    console.log(posx,foodx);
     
-    // Ate food
+    //                        Eating food
     if( posx==foodx && posy==foody ){
 
-        foodx = Math.floor(Math.random()*36)*25;
-        foody = Math.floor(Math.random()*18)*25;
+        foodx = Math.floor(Math.random()*35)*25;
+        foody = Math.floor(Math.random()*17)*25;
         food.style.top = foody + "px";
         food.style.left = foodx + "px";
 
         score++;
-        console.log(score);
+        let outscore = document.getElementById("score");
+        outscore.innerHTML = "Score: "+score;
     }
 
     const head = document.getElementById("head");
@@ -76,9 +72,11 @@ function changedir(input){
         if(pause==0){
             clearInterval(myInterval);
             pause=1;
+            pausebtn.style.visibility = "visible";
         }
         else{
             pause=0;
+            pausebtn.style.visibility = "hidden";
             startgame();
         }
     }

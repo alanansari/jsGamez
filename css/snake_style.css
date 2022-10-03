@@ -10,16 +10,15 @@ body{
 
 .heading{
     text-align: center;
-    color: #ffffff;
-    padding: 2vh 0;
-    font-size: 4.5vw;
+    color: goldenrod;
+    font-size: 3.5vw;
 }
 .console{
     position: relative;
     margin: 0 auto;
     background-image: url("../img/grass.png");
     background-size: cover;
-    height: 450px;
+    height: 425px;
     width: 925px;
     padding: 0;
     box-sizing: border-box;
@@ -29,9 +28,7 @@ body{
     background-image: url("../img/head.png");
     margin: 0;
     height: 25px;
-    width: 25px;
-    top: 0;
-    left: 0;   
+    width: 25px; 
 }
 
 #food{
@@ -40,10 +37,21 @@ body{
     margin: 0;
     height: 25px;
     width: 25px;
-    top:250px;
-    left:100px;
+    top:200px;
+    left:200px;
+}
+
+#pausebtn{
+    visibility: hidden;
+    background-image: url("../img/pause.png");
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 162px;
+    left: 412px;
 }
 
 p{
     color: white;
 }
+
