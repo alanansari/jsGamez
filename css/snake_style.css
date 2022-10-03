@@ -22,8 +22,8 @@ body{
     padding: 0;
     box-sizing: border-box;
 }
-.head{
-    background-color: red;
+#head{
+    background-image: url(../img/head.png);
     margin: 0;
     height: 25px;
     width: 25px;
