@@ -3,6 +3,7 @@ let prevx=0,prevy=0;
 let currx=0,curry=0;
 let up=0,left=0,right=1,down=0;
 let pause = 0, score=0;
+let run = 1;
 const pausebtn = document.getElementById("pausebtn");
 
 // initial food generation
@@ -14,7 +15,7 @@ let myInterval;
 startgame();
 
 function startgame(){
-    myInterval = setInterval(nextframe,120);
+    myInterval = setInterval(nextframe,100);
 }
 
 function incLength(length){
@@ -57,6 +58,14 @@ function crashDetect(length){
 
 function gameOver(){
     clearInterval(myInterval);
+    run = 0;
+    document.getElementById("heading").innerHTML = "GAME OVER";
+    const retry = document.getElementById("retry");
+    retry.style.visibility = "visible";
+    retry.style.display = "block";
+    retry.addEventListener("click",function(){
+        location.reload();
+    });
 }
 
 function nextframe(){
@@ -120,15 +129,20 @@ function changedir(input){
     if(input==='d'||input==='ArrowRight'){
         up=0;down=0;left=0;right=1;
     }
-    if(input===' '){
+    if(input===' '&&run==1){
         if(pause==0){
             clearInterval(myInterval);
             pause=1;
-            pausebtn.style.visibility = "visible";
+            pausebtn.style.display = "block";
+            pausebtn.addEventListener("click",function(){
+                pause=0;
+                pausebtn.style.display = "none";
+                startgame();
+            });
         }
         else{
             pause=0;
-            pausebtn.style.visibility = "hidden";
+            pausebtn.style.display = "none";
             startgame();
         }
     }

@@ -9,7 +9,7 @@ body{
     background-color: #1d0045;
 }
 
-.heading{
+#heading{
     text-align: center;
     color: goldenrod;
     font-size: 3.5vw;
@@ -43,16 +43,24 @@ body{
     left:200px;
 }
 
-#pausebtn{
-    visibility: hidden;
+#pausebtn,#retry{
+    display: none;
     z-index: 2;
-    background-image: url("../img/pause.png");
     height: 100px;
     width: 100px;
     position: absolute;
     top: 162px;
     left: 412px;
 }
+#pausebtn{
+    background-image: url("../img/pause.png");
+    cursor:pointer;
+}
+#retry{
+    cursor: pointer;
+    background-image: url("../img/retry.png");
+}
+
 
 .console_foot{
     display: flex;
