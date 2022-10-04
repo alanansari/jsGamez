@@ -6,7 +6,8 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #1d0045;
+    height: 100vh;
+    background-image: linear-gradient(180deg, #000000, rgb(22, 2, 134));
 }
 
 #heading{

@@ -39,8 +39,8 @@ function updateTailPos(length){
         }else{
             const curr = document.getElementById("tail-"+i);
             curr.style.visibility = "visible";
-            currx=parseInt(curr.style.left.slice(0,-2),10);
-            curry=parseInt(curr.style.top.slice(0,-2),10);
+            currx=Number(curr.style.left.slice(0,-2));
+            curry=Number(curr.style.top.slice(0,-2));
             curr.style.left = prevx + "px";
             curr.style.top = prevy + "px";
             prevx=currx;

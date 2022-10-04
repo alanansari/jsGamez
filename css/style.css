@@ -5,7 +5,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #1d0045;
+    background-image: linear-gradient(180deg, #000000, rgb(22, 2, 134));
 }
 .heading{
     text-align: center;
@@ -23,11 +23,14 @@ body{
     justify-content: space-around;
 }
 .card{
-    background-color: #8a2be2;
+    background-color: #6f11c8;
     height: 15rem;
     width: 12rem;
     margin: 0.6rem;
     border-radius: 1rem;
+}
+.card:hover{
+    box-shadow: 5px 5px 3px 3px #420978;
 }
 a{
     text-decoration: none;
