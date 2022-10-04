@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Silkscreen',sans-serif;
+    color: white;
+}
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: linear-gradient(180deg, #000000, #420878);
+}
+
+#heading{
+    text-align: center;
+    color: goldenrod;
+    font-size: 3.5vw;
+}
+
+hr{
+    width: 70vw;
+    border: none;
+    border-bottom: 2px solid goldenrod;
+    margin-bottom: 25px;
+}
+
+.console{
+    position: relative;
+    background-color: #000000;
+    display: block;
+    width: 800px;
+    height: 450px;
+    margin: 0 auto;
+    cursor: none;
+}
+
+#pad{
+    position: absolute;
+    background-color: beige;
+    width:150px;
+    height:20px;
+    top: 400px;
+    left:325px;
+}
+
+.block{
+    position: absolute;
+    background-image: url('../img/block.png');
+    background-size: cover;
+    width: 50px;
+    height: 20px;
+}
