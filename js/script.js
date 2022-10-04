@@ -22,6 +22,7 @@ function incLength(length){
     const newDiv = document.createElement("div");
     newDiv.setAttribute("id","tail-"+(length-1));
     newDiv.setAttribute("class","tail");
+    newDiv.style.visibility = "hidden";
     const addNode = document.getElementById("console");
     addNode.appendChild(newDiv);
 }
@@ -30,12 +31,14 @@ function updateTailPos(length){
     for(let i=0;i<length;i++){
         if(i==0){
             const x = document.getElementById("tail-"+0);
+            x.style.visibility = "visible";
             x.style.top = posy + "px";
             x.style.left = posx + "px";
             prevx=posx;
             prevy=posy;
         }else{
             const curr = document.getElementById("tail-"+i);
+            curr.style.visibility = "visible";
             currx=parseInt(curr.style.left.slice(0,-2),10);
             curry=parseInt(curr.style.top.slice(0,-2),10);
             curr.style.left = prevx + "px";
@@ -61,7 +64,6 @@ function gameOver(){
     run = 0;
     document.getElementById("heading").innerHTML = "GAME OVER";
     const retry = document.getElementById("retry");
-    retry.style.visibility = "visible";
     retry.style.display = "block";
     retry.addEventListener("click",function(){
         location.reload();
@@ -117,16 +119,16 @@ function nextframe(){
 }
 
 function changedir(input){
-    if(input==='w'||input==='ArrowUp'){
+    if((input==='w'||input==='ArrowUp')&&(down!=1)){
         up=1;down=0;left=0;right=0;
     }
-    if(input==='s'||input==='ArrowDown'){
+    if((input==='s'||input==='ArrowDown')&&(up!=1)){
         up=0;down=1;left=0;right=0;
     }
-    if(input==='a'||input==='ArrowLeft'){
+    if((input==='a'||input==='ArrowLeft')&&(right!=1)){
         up=0;down=0;left=1;right=0;
     }
-    if(input==='d'||input==='ArrowRight'){
+    if((input==='d'||input==='ArrowRight')&&(left!=1)){
         up=0;down=0;left=0;right=1;
     }
     if(input===' '&&run==1){
@@ -134,11 +136,6 @@ function changedir(input){
             clearInterval(myInterval);
             pause=1;
             pausebtn.style.display = "block";
-            pausebtn.addEventListener("click",function(){
-                pause=0;
-                pausebtn.style.display = "none";
-                startgame();
-            });
         }
         else{
             pause=0;

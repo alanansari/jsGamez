@@ -54,7 +54,6 @@ body{
 }
 #pausebtn{
     background-image: url("../img/pause.png");
-    cursor:pointer;
 }
 #retry{
     cursor: pointer;
