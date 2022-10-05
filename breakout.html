@@ -10,11 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onmousemove="getCursorPos(event)">
     <div id="heading">Breakout</div>
     <hr>
-    <div class="console" onmousemove="getCursorPos(event)">
+    <div class="console">
         <div id="pad"></div>
+        <div id="ball"></div>
     </div>
     <script src="js/breakout.js"></script>
 </body>
