@@ -62,13 +62,6 @@ body{
 }
 
 
-.console_foot{
-    display: flex;
-    justify-content: space-between;
-    height: auto;
-    width: 925px;
-}
-
 .tail{
     background-image: url("../img/tail.png");
     position: absolute;
@@ -76,4 +69,10 @@ body{
     width: 25px;
 }
 
+.console_foot{
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    width: 925px;
+}
 

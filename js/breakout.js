@@ -3,6 +3,7 @@ const console = document.querySelector('.console');
 const heading = document.getElementById('heading');
 const pad = document.getElementById('pad');
 const ball = document.getElementById('ball');
+const playbtn = document.getElementById('playbtn');
 const pausebtn = document.getElementById('pausebtn');
 const retry = document.getElementById('retry');
 let posX=0,posY=0,ballX=375,ballY=375;
@@ -11,13 +12,16 @@ let myInterval;
 let pause = 0,run = 1;
 let counter = 0;
 
+playbtn.addEventListener('click',function(){
+    playbtn.style.display = 'none';
+    console.style.cursor = 'none';
+    startgame();
+})
 
-
-startgame();
 
 function startgame(){
     body.addEventListener('mousemove',getCursorPos);
-    myInterval = setInterval(game,15);
+    myInterval = setInterval(game,10);
 }
 
 for(let i=0;i<=3;i++){
@@ -110,6 +114,7 @@ function winGame(){
     clearInterval(myInterval);
     body.removeEventListener('mousemove',getCursorPos);
     retry.style.display = "block";
+    console.style.cursor = "auto";
     retry.addEventListener("click",function(){
         location.reload();
     });
@@ -120,6 +125,7 @@ function gameOver(){
     heading.innerHTML = "Game Over";
     clearInterval(myInterval);
     body.removeEventListener('mousemove',getCursorPos);
+    console.style.cursor = "auto";
     retry.style.display = "block";
     retry.addEventListener("click",function(){
         location.reload();
@@ -133,12 +139,12 @@ window.addEventListener('keydown',function(event){
             pausebtn.style.display = "block";
             clearInterval(myInterval);
             body.removeEventListener('mousemove',getCursorPos);
-            
+            console.style.cursor = "auto";
         }
         else if(pause===1){
             pause=0;
             pausebtn.style.display = "none";
-            body.addEventListener('mousemove',getCursorPos);
+            console.style.cursor = "none";
             startgame();
         }
     }
