@@ -29,7 +29,6 @@ function ballGen(){
     ballY+=yDir*5;
     ball.style.top = ballY + 'px';
     ball.style.left = ballX + 'px';
-    heading.innerHTML = ballY;
 }
 
 
@@ -66,7 +65,7 @@ function checkCollision(){
 }
 
 function checkBlock(){
-    let i=Math.ceil(ballX/100),j=Math.ceil(ballY/40);
+    let i=Math.floor(ballX/100),j=Math.floor((ballY)/40);
     if(document.getElementById("block-"+j+"-"+i))
         return 1;
     else
@@ -74,7 +73,7 @@ function checkBlock(){
 }
 
 function destroyBlock(){
-    let i=Math.ceil(ballX/100),j=Math.ceil(ballY/40);
+    let i=Math.floor(ballX/100),j=Math.floor((ballY)/40);
     let ele = document.getElementById("block-"+j+"-"+i);
     if(ele!=null)
     ele.remove();
