@@ -46,7 +46,6 @@ body{
     flex: auto;
     max-width: 85%;
     max-height: 60%;
-    border: 1px solid green;
     border-radius: 7%;
 }
 a{

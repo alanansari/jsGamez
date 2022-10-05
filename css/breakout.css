@@ -30,7 +30,6 @@ hr{
     width: 800px;
     height: 450px;
     margin: 0 auto;
-    cursor: none;
 }
 
 #pad{
@@ -51,6 +50,23 @@ hr{
     top: 375px;
     left: 375px;
 }
+#pausebtn,#retry{
+    display: none;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 162px;
+    left: 350px;
+}
+#pausebtn{
+    background-image: url("../img/pause.png");
+}
+#retry{
+    cursor: pointer;
+    background-image: url("../img/retry.png");
+}
+
+
 .block{
     position: absolute;
     background-image: url('../img/block.png');

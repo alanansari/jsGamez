@@ -5,7 +5,16 @@ const pad = document.getElementById('pad');
 const ball = document.getElementById('ball');
 let posX=0,posY=0,ballX=375,ballY=375;
 let xDir = 1,yDir = -1;
-let req = setInterval(game,15);
+let myInterval;
+let pause = 0,run=1;
+
+body.addEventListener('mousemove',getCursorPos);
+
+startgame();
+
+function startgame(){
+    myInterval = setInterval(game,15);
+}
 
 for(let i=0;i<=3;i++){
     for(let j=0;j<8;j++){
@@ -86,11 +95,35 @@ function getCursorPos(event){
     pad.style.left = posX-325 + 'px';
 }
 
-body.addEventListener("mousemove",getCursorPos);
 
 function gameOver(){
+    run=0;
     heading.innerHTML = "Game Over";
-    clearInterval(req);
+    clearInterval(myInterval);
     console.style.cursor = "auto";
     body.removeEventListener('mousemove',getCursorPos);
+    const retry = document.getElementById('retry');
+    retry.style.display = "block";
+    retry.addEventListener("click",function(){
+        location.reload();
+    });
 }
+
+window.addEventListener('keydown',function(event){
+    if(event.key===' '&&run===1){
+        if(pause===0){
+            pause = 1
+            pausebtn.style.display = "block";
+            clearInterval(myInterval);
+            body.removeEventListener('mousemove',getCursorPos);
+            
+        }
+        else if(pause===1){
+            pause=0;
+            pausebtn.style.display = "none";
+            body.addEventListener('mousemove',getCursorPos);
+            startgame();
+        }
+    }
+
+});
