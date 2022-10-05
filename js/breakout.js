@@ -14,7 +14,7 @@ let counter = 0;
 
 playbtn.addEventListener('click',function(){
     playbtn.style.display = 'none';
-    console.style.cursor = 'none';
+    body.style.cursor = 'none';
     startgame();
 })
 
@@ -114,7 +114,7 @@ function winGame(){
     clearInterval(myInterval);
     body.removeEventListener('mousemove',getCursorPos);
     retry.style.display = "block";
-    console.style.cursor = "auto";
+    body.style.cursor = "auto";
     retry.addEventListener("click",function(){
         location.reload();
     });
@@ -125,7 +125,7 @@ function gameOver(){
     heading.innerHTML = "Game Over";
     clearInterval(myInterval);
     body.removeEventListener('mousemove',getCursorPos);
-    console.style.cursor = "auto";
+    body.style.cursor = "auto";
     retry.style.display = "block";
     retry.addEventListener("click",function(){
         location.reload();
@@ -139,12 +139,12 @@ window.addEventListener('keydown',function(event){
             pausebtn.style.display = "block";
             clearInterval(myInterval);
             body.removeEventListener('mousemove',getCursorPos);
-            console.style.cursor = "auto";
+            body.style.cursor = "auto";
         }
         else if(pause===1){
             pause=0;
             pausebtn.style.display = "none";
-            console.style.cursor = "none";
+            body.style.cursor = "none";
             startgame();
         }
     }

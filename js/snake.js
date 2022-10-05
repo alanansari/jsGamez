@@ -95,11 +95,14 @@ function nextframe(){
     if(posy>400)
         posy=0;
     
-    //                        Eating food
+    //                       Generating & Eating food
     if( posx==foodx && posy==foody ){
 
         foodx = Math.floor(Math.random()*35)*25;
         foody = Math.floor(Math.random()*17)*25;
+
+        checkFoodLoc();
+
         food.style.top = foody + "px";
         food.style.left = foodx + "px";
 
@@ -117,6 +120,20 @@ function nextframe(){
 
     crashDetect(score);
 }
+
+function checkFoodLoc(){
+    for(let i=0;i<length;i++){
+            let curr = document.getElementById("tail-"+i);
+            currx=Number(curr.style.left.slice(0,-2));
+            curry=Number(curr.style.top.slice(0,-2));
+            if(foodx==currx&&foody==curry){
+                foodx = Math.floor(Math.random()*35)*25;
+                foody = Math.floor(Math.random()*17)*25;
+                checkFoodLoc();
+            }
+    }
+}
+
 
 function changedir(input){
     if((input==='w'||input==='ArrowUp')&&(down!=1)){
