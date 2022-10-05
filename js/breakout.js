@@ -3,16 +3,20 @@ const console = document.querySelector('.console');
 const heading = document.getElementById('heading');
 const pad = document.getElementById('pad');
 const ball = document.getElementById('ball');
+const pausebtn = document.getElementById('pausebtn');
+const retry = document.getElementById('retry');
 let posX=0,posY=0,ballX=375,ballY=375;
 let xDir = 1,yDir = -1;
 let myInterval;
-let pause = 0,run=1;
+let pause = 0,run = 1;
+let counter = 0;
 
-body.addEventListener('mousemove',getCursorPos);
+
 
 startgame();
 
 function startgame(){
+    body.addEventListener('mousemove',getCursorPos);
     myInterval = setInterval(game,15);
 }
 
@@ -45,19 +49,19 @@ function checkCollision(){
 
     // Border Collision
     if(ballX<=0)
-        xDir=1;
+        xDir = 1;
     if(ballX>=775)
-        xDir=-1;
+        xDir = -1;
     if(ballY<=0)
         yDir=1;
-    if(ballY>=425)
-        yDir=-1;
+    if(ballY >= 425)
+        yDir = -1;
 
     // Pad Collision
-    if(ballY>375&&ballY<400){
+    if(ballY>375 && ballY<400){
         let spos = posX-350,epos=spos+160;
-        if(ballX>=spos&&ballX<=epos)
-            yDir=-1;
+        if(ballX>=spos && ballX<=epos)
+            yDir = -1;
     }
 
     if(ballY>405){
@@ -84,8 +88,13 @@ function checkBlock(){
 function destroyBlock(){
     let i=Math.floor(ballX/100),j=Math.floor((ballY)/40);
     let ele = document.getElementById("block-"+j+"-"+i);
-    if(ele!=null)
-    ele.remove();
+    if(ele!=null){
+        ele.remove();
+        counter++;
+        if(counter===32){
+            winGame();
+        }
+    }
 }
 
 function getCursorPos(event){
@@ -96,13 +105,21 @@ function getCursorPos(event){
 }
 
 
+function winGame(){
+    heading.innerHTML = "YOU WON!!";
+    clearInterval(myInterval);
+    body.removeEventListener('mousemove',getCursorPos);
+    retry.style.display = "block";
+    retry.addEventListener("click",function(){
+        location.reload();
+    });
+}
+
 function gameOver(){
     run=0;
     heading.innerHTML = "Game Over";
     clearInterval(myInterval);
-    console.style.cursor = "auto";
     body.removeEventListener('mousemove',getCursorPos);
-    const retry = document.getElementById('retry');
     retry.style.display = "block";
     retry.addEventListener("click",function(){
         location.reload();
