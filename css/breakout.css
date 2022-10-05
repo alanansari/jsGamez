@@ -35,7 +35,7 @@ hr{
 
 #pad{
     position: absolute;
-    background-color: beige;
+    background-color: whitesmoke;
     width:150px;
     height:20px;
     top: 400px;
@@ -44,7 +44,7 @@ hr{
 #ball{
     position: absolute;
     z-index: 1;
-    background-color: beige;
+    background-color: whitesmoke;
     width: 25px;
     height: 25px;
     border-radius: 50%;

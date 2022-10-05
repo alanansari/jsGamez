@@ -1,11 +1,12 @@
+const body = document.querySelector('body');
 const console = document.querySelector('.console');
 const heading = document.getElementById('heading');
 const pad = document.getElementById('pad');
 const ball = document.getElementById('ball');
 let posX=0,posY=0,ballX=375,ballY=375;
 let xDir = 1,yDir = -1;
+let request;
 
-let myInterval = setInterval(game,5);
 
 for(let i=0;i<=3;i++){
     for(let j=0;j<8;j++){
@@ -21,17 +22,29 @@ for(let i=0;i<=3;i++){
 
 function game(){
     ballGen();
+    request = requestAnimationFrame(game);
 }
 
 function ballGen(){
-    ballX+=xDir;
-    ballY+=yDir;
+    ballX+=xDir*5;
+    ballY+=yDir*5;
     checkCollision();
     ball.style.top = ballY + 'px';
     ball.style.left = ballX + 'px';
+
 }
 
+function gameOver(){
+    heading.innerHTML = "Game Over";
+    cancelAnimationFrame(request);
+    console.style.cursor = "auto";
+    body.setAttribute('onmouseover','');
+}
+
+
 function checkCollision(){
+
+    // Border Collision
     if(ballX<=0)
         xDir=1;
     if(ballX>=775)
@@ -40,6 +53,17 @@ function checkCollision(){
         yDir=1;
     if(ballY>=425)
         yDir=-1;
+
+    // Pad Collision
+    if(ballY>375&&ballY<400){
+        let spos = posX-350,epos=spos+150;
+        if(ballX>=spos&&ballX<=epos)
+            yDir=-1;
+    }
+
+    if(ballY>405){
+        gameOver();
+    }
 }
 
 function getCursorPos(event){
