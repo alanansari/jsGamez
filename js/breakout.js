@@ -5,8 +5,7 @@ const pad = document.getElementById('pad');
 const ball = document.getElementById('ball');
 let posX=0,posY=0,ballX=375,ballY=375;
 let xDir = 1,yDir = -1;
-let request;
-
+let req = setInterval(game,15);
 
 for(let i=0;i<=3;i++){
     for(let j=0;j<8;j++){
@@ -22,23 +21,15 @@ for(let i=0;i<=3;i++){
 
 function game(){
     ballGen();
-    request = requestAnimationFrame(game);
 }
 
 function ballGen(){
+    checkCollision();
     ballX+=xDir*5;
     ballY+=yDir*5;
-    checkCollision();
     ball.style.top = ballY + 'px';
     ball.style.left = ballX + 'px';
-
-}
-
-function gameOver(){
-    heading.innerHTML = "Game Over";
-    cancelAnimationFrame(request);
-    console.style.cursor = "auto";
-    body.setAttribute('onmouseover','');
+    heading.innerHTML = ballY;
 }
 
 
@@ -56,7 +47,7 @@ function checkCollision(){
 
     // Pad Collision
     if(ballY>375&&ballY<400){
-        let spos = posX-350,epos=spos+150;
+        let spos = posX-350,epos=spos+160;
         if(ballX>=spos&&ballX<=epos)
             yDir=-1;
     }
@@ -64,6 +55,29 @@ function checkCollision(){
     if(ballY>405){
         gameOver();
     }
+
+    // Check for Blocks
+
+    if(checkBlock()){
+        yDir = 1;
+        destroyBlock();
+    }
+
+}
+
+function checkBlock(){
+    let i=Math.ceil(ballX/100),j=Math.ceil(ballY/40);
+    if(document.getElementById("block-"+j+"-"+i))
+        return 1;
+    else
+        return 0;
+}
+
+function destroyBlock(){
+    let i=Math.ceil(ballX/100),j=Math.ceil(ballY/40);
+    let ele = document.getElementById("block-"+j+"-"+i);
+    if(ele!=null)
+    ele.remove();
 }
 
 function getCursorPos(event){
@@ -71,4 +85,13 @@ function getCursorPos(event){
     if(posX<325) posX=325;
     if(posX>975) posX=975;
     pad.style.left = posX-325 + 'px';
+}
+
+body.addEventListener("mousemove",getCursorPos);
+
+function gameOver(){
+    heading.innerHTML = "Game Over";
+    clearInterval(req);
+    console.style.cursor = "auto";
+    body.removeEventListener('mousemove',getCursorPos);
 }
