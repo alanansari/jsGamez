@@ -9,18 +9,19 @@ const retry = document.getElementById('retry');
 let posX=0,posY=0,ballX=375,ballY=375;
 let xDir = 1,yDir = -1;
 let myInterval;
-let pause = 0,run = 1;
+let pause = 1,run = 1;
 let counter = 0;
 
 playbtn.addEventListener('click',function(){
     playbtn.style.display = 'none';
-    body.style.cursor = 'none';
+    pause = 0;
     startgame();
 })
 
 
 function startgame(){
     body.addEventListener('mousemove',getCursorPos);
+    body.style.cursor = 'none';
     myInterval = setInterval(game,10);
 }
 
@@ -134,6 +135,7 @@ function gameOver(){
 
 window.addEventListener('keydown',function(event){
     if(event.key===' '&&run===1){
+        body.style.cursor = 'none';
         if(pause===0){
             pause = 1
             pausebtn.style.display = "block";
@@ -143,10 +145,12 @@ window.addEventListener('keydown',function(event){
         }
         else if(pause===1){
             pause=0;
+            playbtn.style.display = "none";
             pausebtn.style.display = "none";
             body.style.cursor = "none";
             startgame();
         }
+    }else if(event.key===' '&&run===0){
+        location.reload();
     }
-
 });

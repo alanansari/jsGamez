@@ -101,7 +101,7 @@ function nextframe(){
         foodx = Math.floor(Math.random()*35)*25;
         foody = Math.floor(Math.random()*17)*25;
 
-        checkFoodLoc();
+        checkFoodLoc(score);
 
         food.style.top = foody + "px";
         food.style.left = foodx + "px";
@@ -121,7 +121,7 @@ function nextframe(){
     crashDetect(score);
 }
 
-function checkFoodLoc(){
+function checkFoodLoc(length){
     for(let i=0;i<length;i++){
             let curr = document.getElementById("tail-"+i);
             currx=Number(curr.style.left.slice(0,-2));
@@ -129,7 +129,7 @@ function checkFoodLoc(){
             if(foodx==currx&&foody==curry){
                 foodx = Math.floor(Math.random()*35)*25;
                 foody = Math.floor(Math.random()*17)*25;
-                checkFoodLoc();
+                checkFoodLoc(length);
             }
     }
 }
@@ -159,6 +159,8 @@ function changedir(input){
             pausebtn.style.display = "none";
             startgame();
         }
+    }else if(input===' '&&run==0){
+        location.reload();
     }
 }
 
