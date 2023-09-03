@@ -116,6 +116,7 @@ function winGame(){
     body.removeEventListener('mousemove',getCursorPos);
     retry.style.display = "block";
     body.style.cursor = "auto";
+    run = 0;
     retry.addEventListener("click",function(){
         location.reload();
     });
